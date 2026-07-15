@@ -10,6 +10,7 @@ A smart FAQ chatbot that matches user questions to the most relevant FAQ answers
 - **Modern Web UI**: Responsive HTML/CSS/JS frontend
 - **FAQ Sidebar**: Quick access to all available FAQs
 - **Confidence Scoring**: Shows how confident the chatbot is in its answer
+- **Dark and Light Mode Theme**
 - **Multiple Results**: Can return top K matching FAQs
 
 ## Project Structure
@@ -34,7 +35,8 @@ code_alpha_chatbotForFAQ/
 
 ## Installation
 
-### Prerequisites
+### METHOD-1 
+## Prerequisites 
 
 - Python 3.7+
 - pip (Python package manager)
@@ -89,95 +91,32 @@ Open your browser and navigate to:
 ```
 http://localhost:5000
 ```
+### METHOD-2
+If you already have run.bat and run.sh scripts set up:
 
-## API Endpoints
-
-### 1. Chat Endpoint
-
-**POST** `/api/chat`
-
-Request:
-
-```json
-{
-  "question": "How do I reset my password?"
-}
+On Windows: 
+```
+.\run.bat
 ```
 
-Response:
-
-```json
-{
-  "success": true,
-  "answer": "To reset your password, click on 'Forgot Password' on the login page...",
-  "matched_question": "How do I reset my password?",
-  "confidence": 0.9876,
-  "type": "answer"
-}
+On Linux/Mac:
+```
+bash run.sh
 ```
 
-### 2. Get All FAQs
-
-**GET** `/api/faqs`
-
-Response:
-
-```json
-{
-  "faqs": [
-    {
-      "id": 1,
-      "question": "How do I reset my password?",
-      "answer": "To reset your password..."
-    },
-    ...
-  ]
-}
+### METHOD-3
 ```
+# Step 1: Install dependencies from root directory
+pip install -r requirements.txt
 
-### 3. Search FAQs
+# Step 2: Navigate to backend
+cd backend
 
-**POST** `/api/search`
-
-Request:
-
-```json
-{
-  "query": "payment methods"
-}
+# Step 3: Run the application
+python app.py
 ```
+ Then open: http://localhost:5000
 
-Response:
-
-```json
-{
-  "success": true,
-  "query": "payment methods",
-  "matches": [
-    {
-      "id": 3,
-      "question": "What payment methods do you accept?",
-      "answer": "We accept credit cards...",
-      "similarity_score": 0.8234
-    },
-    ...
-  ],
-  "count": 3
-}
-```
-
-### 4. Health Check
-
-**GET** `/api/health`
-
-Response:
-
-```json
-{
-  "status": "healthy",
-  "message": "FAQ Chatbot API is running"
-}
-```
 
 ## How It Works
 
@@ -254,15 +193,7 @@ app.run(debug=True, port=8000)  # Change from 5000 to 8000
 - **NLP**: NLTK (Natural Language Toolkit)
 - **Similarity**: Cosine Similarity (TF-IDF concept)
 
-## Limitations & Future Improvements
-
-### Current Limitations
-
-- FAQ database stored in JSON file (no persistence)
-- Single-turn conversations (no conversation history)
-- English language only
-- No sentiment analysis
-- No context awareness across multiple questions
+##  Future Improvements
 
 ### Future Enhancements
 
@@ -303,15 +234,6 @@ nltk.download('all')
 
 The application uses Flask-CORS to handle cross-origin requests. If you still see errors, check that the frontend is accessing the correct API URL.
 
-## License
-
-This project is open source and available for educational and commercial use.
-
-## Support
-
-For issues, questions, or suggestions, please reach out to the development team.
-
----
 
 **Version**: 1.0  
 **Last Updated**: 2024  
